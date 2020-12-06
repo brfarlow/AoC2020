@@ -34,6 +34,3 @@ seat_ids.sort()
 
 print(max(seat_ids))
 print(find_seat_number(seat_ids))
-
-
-
