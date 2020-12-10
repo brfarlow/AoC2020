@@ -24,7 +24,7 @@ for idx, value in enumerate(xmas):
 print(invalid_value)
 
 input_length = len(lines)
-minimum, maximum = 0, 0
+minimum, maximum = None, None
 
 for i in range(input_length):
     for j in range(input_length - 1):
@@ -33,7 +33,7 @@ for i in range(input_length):
             maximum = max(lines[i:j])
             break
 
-    if minimum != 0 and maximum != 0:
+    if minimum and maximum:
         break
 
 print(minimum + maximum)
