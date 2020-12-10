@@ -1,5 +1,3 @@
-from itertools import combinations
-
 with open('day9.txt') as f:
     lines = [int(x.replace('\n', '')) for x in f.readlines()]
 
