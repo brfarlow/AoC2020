@@ -23,3 +23,18 @@ for idx, value in enumerate(xmas):
 
 print(invalid_value)
 
+input_length = len(lines)
+minimum, maximum = 0, 0
+
+for i in range(input_length):
+    for j in range(input_length - 1):
+        if sum(lines[i:j]) == invalid_value and not i == j - 1:
+            minimum = min(lines[i:j])
+            maximum = max(lines[i:j])
+            break
+
+    if minimum != 0 and maximum != 0:
+        break
+
+print(minimum + maximum)
+
