@@ -35,4 +35,3 @@ for i in range(input_length):
         break
 
 print(minimum + maximum)
-
