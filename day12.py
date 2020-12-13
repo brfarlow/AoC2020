@@ -50,7 +50,7 @@ def part_2_move(direction, amount, facing, x_pos, y_pos, way_x, way_y):
         for _ in range(amount // 90):
             way_x, way_y = -way_y, way_x
     elif direction == 'R':
-        for _ in range( amount // 90):
+        for _ in range(amount // 90):
             way_x, way_y = way_y, -way_x
     else:  # F
         x_pos += way_x * amount
