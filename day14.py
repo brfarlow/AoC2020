@@ -1,8 +1,7 @@
 from collections import defaultdict
-from itertools import product
 
 
-def do_mask(value_to_save, mask):
+def mask_value_part_1(value_to_save, mask):
     binary = bin(value_to_save).replace("0b", "")
     new_value = mask
     current = len(binary)
@@ -19,11 +18,6 @@ def do_mask(value_to_save, mask):
                 new_value = new_value[:-current] + i + new_value[-current+1:]
         current -= 1
 
-    return new_value
-
-
-def mask_value_part_1(value_to_save, mask):
-    new_value = do_mask(value_to_save, mask)
     new_value = new_value.replace("X", "0")
 
     return int(new_value, 2)
@@ -40,24 +34,28 @@ def mask_value_part_2(value_to_save, mask):
     return [int(x, 2) for x in res]
 
 
-with open('day14.txt') as f:
-    lines = [x.replace('\n', '') for x in f.readlines()]
+def main():
+    with open('day14.txt') as f:
+        lines = [x.replace('\n', '') for x in f.readlines()]
 
 
-mask = ""
-part_1_values = defaultdict(int)
-part_2_values = defaultdict(int)
+    mask = ""
+    part_1_values = defaultdict(int)
+    part_2_values = defaultdict(int)
 
-for line in lines:
-    if line.startswith("mask ="):
-        mask = line.split('=')[1].strip()
-    else:
-        value_to_save = int(line.split("=")[1].strip())
-        address = int(line[line.find("[") + 1: line.find("]")])
+    for line in lines:
+        if line.startswith("mask ="):
+            mask = line.split('=')[1].strip()
+        else:
+            value_to_save = int(line.split("=")[1].strip())
+            address = int(line[line.find("[") + 1: line.find("]")])
 
-        part_1_values[address] = mask_value_part_1(value_to_save, mask)
-        for value_to_change in mask_value_part_2(address, mask):
-            part_2_values[value_to_change] = int(value_to_save)
+            part_1_values[address] = mask_value_part_1(value_to_save, mask)
+            for value_to_change in mask_value_part_2(address, mask):
+                part_2_values[value_to_change] = value_to_save
 
-print(sum(part_1_values.values()))
-print(sum(part_2_values.values()))
+    print(sum(part_1_values.values()))
+    print(sum(part_2_values.values()))
+
+if __name__ == "__main__":
+    main()
