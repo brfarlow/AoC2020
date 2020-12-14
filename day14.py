@@ -38,7 +38,6 @@ def main():
     with open('day14.txt') as f:
         lines = [x.replace('\n', '') for x in f.readlines()]
 
-
     mask = ""
     part_1_values = defaultdict(int)
     part_2_values = defaultdict(int)
@@ -56,6 +55,7 @@ def main():
 
     print(sum(part_1_values.values()))
     print(sum(part_2_values.values()))
+
 
 if __name__ == "__main__":
     main()
